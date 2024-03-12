@@ -13,6 +13,7 @@ class FailureResult<S, F extends Failure> extends Result<S, F> {
       onFailure(_value);
 
   @override
+  // ignore: non_nullable_equals_parameter
   bool operator ==(dynamic other) =>
       other is FailureResult && other._value == _value;
 
