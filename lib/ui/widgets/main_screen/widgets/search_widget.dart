@@ -22,7 +22,9 @@ class _SearchWidgetState extends State<SearchWidget> {
     if (_textEditingController.text.length < 3) {
       return;
     }
-    context.read<WeatherCubit>().onSubmitSearch(_textEditingController.text);
+    context
+        .read<WeatherCubit>()
+        .onSubmitSearch(cityName: _textEditingController.text);
   }
 
   @override

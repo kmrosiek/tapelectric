@@ -13,23 +13,12 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   String cityName = '';
 
-  void onSubmitLocate() async {
-    emit(WeatherCubitLoading.fromState(state));
+  void onSubmitLocate() async => _onSubmit();
 
-    final result = await _repository.getWeather();
-    result.fold(
-      onSuccess: (data) {
-        emit(WeatherDataLoaded(forecastObject: data));
-      },
-      onFailure: (failure) {
-        emit(
-          WeatherDataError(error: failure.error),
-        );
-      },
-    );
-  }
+  void onSubmitSearch({String? cityName}) async =>
+      _onSubmit(cityName: cityName);
 
-  void onSubmitSearch(String cityName) async {
+  Future<void> _onSubmit({String? cityName}) async {
     emit(WeatherSearchLoading.fromState(state));
 
     final result = await _repository.getWeather(city: cityName);
