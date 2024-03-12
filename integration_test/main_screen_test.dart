@@ -14,7 +14,8 @@ class MockWeatherRepository extends Mock implements WeatherRepository {}
 
 class MockWeatherForecastModel extends Mock implements WeatherForecastModel {}
 
-class MockWeatherCubit extends MockCubit<WeatherState> implements WeatherCubit {}
+class MockWeatherCubit extends MockCubit<WeatherState>
+    implements WeatherCubit {}
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -34,10 +35,12 @@ void main() {
       getIt.registerLazySingleton<WeatherRepository>(() => weatherRepository);
     });
 
-    testWidgets('MainScreenWidget shows loading spinner when WeatherCubitLoading state is emitted',
+    testWidgets(
+        'MainScreenWidget shows loading spinner when WeatherCubitLoading state is emitted',
         (WidgetTester tester) async {
       // Stub the WeatherCubit state to emit WeatherCubitLoading
-      when(() => weatherCubit.state).thenAnswer((invocation) => const WeatherCubitLoading());
+      when(() => weatherCubit.state)
+          .thenAnswer((invocation) => const WeatherCubitLoading());
 
       await tester.pumpWidget(const MyApp());
 
@@ -59,14 +62,17 @@ void main() {
     //   expect(find.byType(CityInfoWidget), findsOneWidget);
     // });
 
-    testWidgets('SearchWidget triggers weather search when search button is pressed', (WidgetTester tester) async {
+    testWidgets(
+        'SearchWidget triggers weather search when search button is pressed',
+        (WidgetTester tester) async {
       // Stub the WeatherCubit state to emit WeatherSearchLoading
 
-      when(()=>weatherForecastModel.current).thenReturn(Current(tempC: 30));
-      when(()=>weatherForecastModel.location).thenReturn(Location(name: 'Paris'));
+      when(() => weatherForecastModel.current).thenReturn(Current(tempC: 30));
+      when(() => weatherForecastModel.location)
+          .thenReturn(Location(name: 'Paris'));
 
-      when(() => weatherCubit.state)
-          .thenAnswer((invocation) => WeatherDataLoaded(forecastObject: weatherForecastModel));
+      when(() => weatherCubit.state).thenAnswer((invocation) =>
+          WeatherDataLoaded(forecastObject: weatherForecastModel));
 
       await tester.pumpWidget(const MyApp());
 
@@ -76,7 +82,7 @@ void main() {
       await tester.pump();
 
       // Verify that the searchWeather function is called
-      verify(() => weatherCubit.onSubmitSearch('London')).called(1);
+      verify(() => weatherCubit.onSubmitSearch(cityName: 'London')).called(1);
     });
   });
 }
