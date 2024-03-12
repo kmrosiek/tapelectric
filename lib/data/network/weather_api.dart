@@ -3,7 +3,7 @@ import 'dart:io' as http;
 
 import 'package:injectable/injectable.dart';
 import 'package:weathet_app/data/models/weather_forecast_hourly.dart';
-import 'package:weathet_app/common/constants/api_constants.dart';
+import 'package:weathet_app/data/network/api_constants.dart';
 import 'package:weathet_app/common/utils/location.dart';
 
 @Named('WeatherApi')
