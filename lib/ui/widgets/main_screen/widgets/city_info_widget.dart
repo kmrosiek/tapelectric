@@ -5,6 +5,7 @@ import 'package:weathet_app/common/constants/app_colors.dart';
 import 'package:weathet_app/common/utils/helpers.dart';
 import 'package:weathet_app/common/widgets/app_text.dart';
 import 'package:weathet_app/features/weather/weather.dart';
+import 'package:weathet_app/ui/widgets/main_screen/widgets/favorite_widget.dart';
 
 class CityInfoWidget extends StatelessWidget {
   const CityInfoWidget({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class CityInfoWidget extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            FavoriteWidget(weatherData: state.forecastObject!),
             url != null ? Image.network(url, scale: 1.2) : const SizedBox(),
             const SizedBox(height: 8),
             Row(

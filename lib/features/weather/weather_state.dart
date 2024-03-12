@@ -6,11 +6,6 @@ abstract class WeatherState extends Equatable {
   final WeatherForecastModel? forecastObject;
 }
 
-class WeatherCubitInitial extends WeatherState {
-  @override
-  List<Object> get props => [];
-}
-
 class WeatherCubitLoading extends WeatherState {
   const WeatherCubitLoading();
 
