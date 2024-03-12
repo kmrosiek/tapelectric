@@ -1,10 +1,10 @@
 part of weather;
 
-@lazySingleton
+@injectable
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit({required WeatherRepository repository})
       : _repository = repository,
-        super(WeatherInitial());
+        super(const WeatherCubitLoading());
 
   final WeatherRepository _repository;
   WeatherForecastModel? _forecastObject;

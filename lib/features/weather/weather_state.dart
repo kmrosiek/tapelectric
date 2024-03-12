@@ -6,11 +6,6 @@ abstract class WeatherState extends Equatable {
   final WeatherForecastModel? forecastObject;
 }
 
-class WeatherInitial extends WeatherState {
-  @override
-  List<Object> get props => [];
-}
-
 class WeatherCubitInitial extends WeatherState {
   @override
   List<Object> get props => [];
@@ -19,14 +14,16 @@ class WeatherCubitInitial extends WeatherState {
 class WeatherCubitLoading extends WeatherState {
   const WeatherCubitLoading();
 
-  WeatherCubitLoading.fromState(WeatherState state) : super(forecastObject: state.forecastObject);
+  WeatherCubitLoading.fromState(WeatherState state)
+      : super(forecastObject: state.forecastObject);
 
   @override
   List<Object> get props => [];
 }
 
 class WeatherSearchLoading extends WeatherState {
-  WeatherSearchLoading.fromState(WeatherState state) : super(forecastObject: state.forecastObject);
+  WeatherSearchLoading.fromState(WeatherState state)
+      : super(forecastObject: state.forecastObject);
 
   @override
   List<Object> get props => [];
@@ -37,7 +34,8 @@ class WeatherDataError extends WeatherState {
 
   const WeatherDataError({required this.error});
 
-  WeatherDataError.fromState(WeatherState state, this.error) : super(forecastObject: state.forecastObject);
+  WeatherDataError.fromState(WeatherState state, this.error)
+      : super(forecastObject: state.forecastObject);
 
   @override
   List<Object> get props => [error];

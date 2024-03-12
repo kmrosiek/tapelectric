@@ -4,8 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
@@ -19,7 +18,7 @@ import 'package:weathet_app/di/di_module.dart' as _i7;
 import 'package:weathet_app/features/weather/weather.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   _i1.GetIt init({
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
@@ -40,7 +39,7 @@ extension GetItInjectableX on _i1.GetIt {
             weatherApi: gh<_i4.WeatherApi>(instanceName: 'WeatherApi')));
     gh.lazySingleton<_i5.WeatherRepository>(() => _i5.WeatherRepository(
         remoteDataSource: gh<_i5.WeatherRemoteDataSource>()));
-    gh.lazySingleton<_i6.WeatherCubit>(
+    gh.factory<_i6.WeatherCubit>(
         () => _i6.WeatherCubit(repository: gh<_i5.WeatherRepository>()));
     return this;
   }

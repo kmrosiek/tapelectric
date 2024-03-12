@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:geolocator/geolocator.dart';
 
 class UserLocation {
@@ -17,11 +19,13 @@ class UserLocation {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
+        log('Location permissions are denied');
         return Future.error('Location permissions are denied');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
+      log('Location permissions are permanently denied, we cannot request permissions.');
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
